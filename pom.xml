@@ -7,7 +7,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>x-superman Maven Webapp</name>
 	<url>http://maven.apache.org</url>
-
+	<!-- git -->
 	<profiles>
 		<profile>
 			<!-- 本地开发环境 -->
