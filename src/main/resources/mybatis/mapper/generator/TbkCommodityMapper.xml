@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="x.superman.mapper.TbkCommodityMapper" >
+  <resultMap id="BaseResultMap" type="x.superman.pojo.generator.TbkCommodity" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="spid" property="spid" jdbcType="VARCHAR" />
+    <result column="spmc" property="spmc" jdbcType="VARCHAR" />
+    <result column="spzt" property="spzt" jdbcType="VARCHAR" />
+    <result column="spxqy" property="spxqy" jdbcType="VARCHAR" />
+    <result column="smyjlm" property="smyjlm" jdbcType="VARCHAR" />
+    <result column="tbklj" property="tbklj" jdbcType="VARCHAR" />
+    <result column="spjg" property="spjg" jdbcType="VARCHAR" />
+    <result column="spysl" property="spysl" jdbcType="VARCHAR" />
+    <result column="srbl" property="srbl" jdbcType="VARCHAR" />
+    <result column="yj" property="yj" jdbcType="VARCHAR" />
+    <result column="mjww" property="mjww" jdbcType="VARCHAR" />
+    <result column="mjid" property="mjid" jdbcType="VARCHAR" />
+    <result column="dpmc" property="dpmc" jdbcType="VARCHAR" />
+    <result column="ptlx" property="ptlx" jdbcType="VARCHAR" />
+    <result column="yhqid" property="yhqid" jdbcType="VARCHAR" />
+    <result column="yhqzl" property="yhqzl" jdbcType="VARCHAR" />
+    <result column="yhqsyl" property="yhqsyl" jdbcType="VARCHAR" />
+    <result column="yhqme" property="yhqme" jdbcType="VARCHAR" />
+    <result column="yhqkssj" property="yhqkssj" jdbcType="VARCHAR" />
+    <result column="yhqjssj" property="yhqjssj" jdbcType="VARCHAR" />
+    <result column="yhqlj" property="yhqlj" jdbcType="VARCHAR" />
+    <result column="spyhqtglj" property="spyhqtglj" jdbcType="VARCHAR" />
+    <result column="upload_id" property="uploadId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, spid, spmc, spzt, spxqy, smyjlm, tbklj, spjg, spysl, srbl, yj, mjww, mjid, dpmc, 
+    ptlx, yhqid, yhqzl, yhqsyl, yhqme, yhqkssj, yhqjssj, yhqlj, spyhqtglj, upload_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="x.superman.pojo.generator.TbkCommodityExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from e_tbk_commodity
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from e_tbk_commodity
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from e_tbk_commodity
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="x.superman.pojo.generator.TbkCommodity" >
+    insert into e_tbk_commodity (id, spid, spmc, 
+      spzt, spxqy, smyjlm, 
+      tbklj, spjg, spysl, 
+      srbl, yj, mjww, mjid, 
+      dpmc, ptlx, yhqid, 
+      yhqzl, yhqsyl, yhqme, 
+      yhqkssj, yhqjssj, yhqlj, 
+      spyhqtglj, upload_id)
+    values (#{id,jdbcType=VARCHAR}, #{spid,jdbcType=VARCHAR}, #{spmc,jdbcType=VARCHAR}, 
+      #{spzt,jdbcType=VARCHAR}, #{spxqy,jdbcType=VARCHAR}, #{smyjlm,jdbcType=VARCHAR}, 
+      #{tbklj,jdbcType=VARCHAR}, #{spjg,jdbcType=VARCHAR}, #{spysl,jdbcType=VARCHAR}, 
+      #{srbl,jdbcType=VARCHAR}, #{yj,jdbcType=VARCHAR}, #{mjww,jdbcType=VARCHAR}, #{mjid,jdbcType=VARCHAR}, 
+      #{dpmc,jdbcType=VARCHAR}, #{ptlx,jdbcType=VARCHAR}, #{yhqid,jdbcType=VARCHAR}, 
+      #{yhqzl,jdbcType=VARCHAR}, #{yhqsyl,jdbcType=VARCHAR}, #{yhqme,jdbcType=VARCHAR}, 
+      #{yhqkssj,jdbcType=VARCHAR}, #{yhqjssj,jdbcType=VARCHAR}, #{yhqlj,jdbcType=VARCHAR}, 
+      #{spyhqtglj,jdbcType=VARCHAR}, #{uploadId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="x.superman.pojo.generator.TbkCommodity" >
+    insert into e_tbk_commodity
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="spid != null" >
+        spid,
+      </if>
+      <if test="spmc != null" >
+        spmc,
+      </if>
+      <if test="spzt != null" >
+        spzt,
+      </if>
+      <if test="spxqy != null" >
+        spxqy,
+      </if>
+      <if test="smyjlm != null" >
+        smyjlm,
+      </if>
+      <if test="tbklj != null" >
+        tbklj,
+      </if>
+      <if test="spjg != null" >
+        spjg,
+      </if>
+      <if test="spysl != null" >
+        spysl,
+      </if>
+      <if test="srbl != null" >
+        srbl,
+      </if>
+      <if test="yj != null" >
+        yj,
+      </if>
+      <if test="mjww != null" >
+        mjww,
+      </if>
+      <if test="mjid != null" >
+        mjid,
+      </if>
+      <if test="dpmc != null" >
+        dpmc,
+      </if>
+      <if test="ptlx != null" >
+        ptlx,
+      </if>
+      <if test="yhqid != null" >
+        yhqid,
+      </if>
+      <if test="yhqzl != null" >
+        yhqzl,
+      </if>
+      <if test="yhqsyl != null" >
+        yhqsyl,
+      </if>
+      <if test="yhqme != null" >
+        yhqme,
+      </if>
+      <if test="yhqkssj != null" >
+        yhqkssj,
+      </if>
+      <if test="yhqjssj != null" >
+        yhqjssj,
+      </if>
+      <if test="yhqlj != null" >
+        yhqlj,
+      </if>
+      <if test="spyhqtglj != null" >
+        spyhqtglj,
+      </if>
+      <if test="uploadId != null" >
+        upload_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="spid != null" >
+        #{spid,jdbcType=VARCHAR},
+      </if>
+      <if test="spmc != null" >
+        #{spmc,jdbcType=VARCHAR},
+      </if>
+      <if test="spzt != null" >
+        #{spzt,jdbcType=VARCHAR},
+      </if>
+      <if test="spxqy != null" >
+        #{spxqy,jdbcType=VARCHAR},
+      </if>
+      <if test="smyjlm != null" >
+        #{smyjlm,jdbcType=VARCHAR},
+      </if>
+      <if test="tbklj != null" >
+        #{tbklj,jdbcType=VARCHAR},
+      </if>
+      <if test="spjg != null" >
+        #{spjg,jdbcType=VARCHAR},
+      </if>
+      <if test="spysl != null" >
+        #{spysl,jdbcType=VARCHAR},
+      </if>
+      <if test="srbl != null" >
+        #{srbl,jdbcType=VARCHAR},
+      </if>
+      <if test="yj != null" >
+        #{yj,jdbcType=VARCHAR},
+      </if>
+      <if test="mjww != null" >
+        #{mjww,jdbcType=VARCHAR},
+      </if>
+      <if test="mjid != null" >
+        #{mjid,jdbcType=VARCHAR},
+      </if>
+      <if test="dpmc != null" >
+        #{dpmc,jdbcType=VARCHAR},
+      </if>
+      <if test="ptlx != null" >
+        #{ptlx,jdbcType=VARCHAR},
+      </if>
+      <if test="yhqid != null" >
+        #{yhqid,jdbcType=VARCHAR},
+      </if>
+      <if test="yhqzl != null" >
+        #{yhqzl,jdbcType=VARCHAR},
+      </if>
+      <if test="yhqsyl != null" >
+        #{yhqsyl,jdbcType=VARCHAR},
+      </if>
+      <if test="yhqme != null" >
+        #{yhqme,jdbcType=VARCHAR},
+      </if>
+      <if test="yhqkssj != null" >
+        #{yhqkssj,jdbcType=VARCHAR},
+      </if>
+      <if test="yhqjssj != null" >
+        #{yhqjssj,jdbcType=VARCHAR},
+      </if>
+      <if test="yhqlj != null" >
+        #{yhqlj,jdbcType=VARCHAR},
+      </if>
+      <if test="spyhqtglj != null" >
+        #{spyhqtglj,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadId != null" >
+        #{uploadId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="x.superman.pojo.generator.TbkCommodity" >
+    update e_tbk_commodity
+    <set >
+      <if test="spid != null" >
+        spid = #{spid,jdbcType=VARCHAR},
+      </if>
+      <if test="spmc != null" >
+        spmc = #{spmc,jdbcType=VARCHAR},
+      </if>
+      <if test="spzt != null" >
+        spzt = #{spzt,jdbcType=VARCHAR},
+      </if>
+      <if test="spxqy != null" >
+        spxqy = #{spxqy,jdbcType=VARCHAR},
+      </if>
+      <if test="smyjlm != null" >
+        smyjlm = #{smyjlm,jdbcType=VARCHAR},
+      </if>
+      <if test="tbklj != null" >
+        tbklj = #{tbklj,jdbcType=VARCHAR},
+      </if>
+      <if test="spjg != null" >
+        spjg = #{spjg,jdbcType=VARCHAR},
+      </if>
+      <if test="spysl != null" >
+        spysl = #{spysl,jdbcType=VARCHAR},
+      </if>
+      <if test="srbl != null" >
+        srbl = #{srbl,jdbcType=VARCHAR},
+      </if>
+      <if test="yj != null" >
+        yj = #{yj,jdbcType=VARCHAR},
+      </if>
+      <if test="mjww != null" >
+        mjww = #{mjww,jdbcType=VARCHAR},
+      </if>
+      <if test="mjid != null" >
+        mjid = #{mjid,jdbcType=VARCHAR},
+      </if>
+      <if test="dpmc != null" >
+        dpmc = #{dpmc,jdbcType=VARCHAR},
+      </if>
+      <if test="ptlx != null" >
+        ptlx = #{ptlx,jdbcType=VARCHAR},
+      </if>
+      <if test="yhqid != null" >
+        yhqid = #{yhqid,jdbcType=VARCHAR},
+      </if>
+      <if test="yhqzl != null" >
+        yhqzl = #{yhqzl,jdbcType=VARCHAR},
+      </if>
+      <if test="yhqsyl != null" >
+        yhqsyl = #{yhqsyl,jdbcType=VARCHAR},
+      </if>
+      <if test="yhqme != null" >
+        yhqme = #{yhqme,jdbcType=VARCHAR},
+      </if>
+      <if test="yhqkssj != null" >
+        yhqkssj = #{yhqkssj,jdbcType=VARCHAR},
+      </if>
+      <if test="yhqjssj != null" >
+        yhqjssj = #{yhqjssj,jdbcType=VARCHAR},
+      </if>
+      <if test="yhqlj != null" >
+        yhqlj = #{yhqlj,jdbcType=VARCHAR},
+      </if>
+      <if test="spyhqtglj != null" >
+        spyhqtglj = #{spyhqtglj,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadId != null" >
+        upload_id = #{uploadId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="x.superman.pojo.generator.TbkCommodity" >
+    update e_tbk_commodity
+    set spid = #{spid,jdbcType=VARCHAR},
+      spmc = #{spmc,jdbcType=VARCHAR},
+      spzt = #{spzt,jdbcType=VARCHAR},
+      spxqy = #{spxqy,jdbcType=VARCHAR},
+      smyjlm = #{smyjlm,jdbcType=VARCHAR},
+      tbklj = #{tbklj,jdbcType=VARCHAR},
+      spjg = #{spjg,jdbcType=VARCHAR},
+      spysl = #{spysl,jdbcType=VARCHAR},
+      srbl = #{srbl,jdbcType=VARCHAR},
+      yj = #{yj,jdbcType=VARCHAR},
+      mjww = #{mjww,jdbcType=VARCHAR},
+      mjid = #{mjid,jdbcType=VARCHAR},
+      dpmc = #{dpmc,jdbcType=VARCHAR},
+      ptlx = #{ptlx,jdbcType=VARCHAR},
+      yhqid = #{yhqid,jdbcType=VARCHAR},
+      yhqzl = #{yhqzl,jdbcType=VARCHAR},
+      yhqsyl = #{yhqsyl,jdbcType=VARCHAR},
+      yhqme = #{yhqme,jdbcType=VARCHAR},
+      yhqkssj = #{yhqkssj,jdbcType=VARCHAR},
+      yhqjssj = #{yhqjssj,jdbcType=VARCHAR},
+      yhqlj = #{yhqlj,jdbcType=VARCHAR},
+      spyhqtglj = #{spyhqtglj,jdbcType=VARCHAR},
+      upload_id = #{uploadId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

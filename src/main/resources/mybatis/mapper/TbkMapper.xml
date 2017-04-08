@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="x.superman.mapper.TbkMapper" >
+  
+  <insert id="insertCommoditySettle" parameterType="int">
+	INSERT INTO E_TBK_COMMODITY_SETTLE
+	  (ID,
+	   MC,
+	   LM,
+	   ZT,
+	   JG,
+	   YXL,
+	   SRBL,
+	   YJ,
+	   PTLX,
+	   YHQ_SL,
+	   YHQ_SY,
+	   YHQ_ME,
+	   YHQ_JE,
+	   YHQ_SKSJ,
+	   YHQ_JSSJ)
+	  SELECT ID,
+	         SPMC,
+	         SMYJLM,
+	         SPZT,
+	         CONVERT(SPJG, DECIMAL),
+	         CONVERT(SPYSL, DECIMAL),
+	         CONVERT(SRBL, DECIMAL),
+	         CONVERT(YJ, DECIMAL),
+	         PTLX,
+	         CONVERT(YHQZL, DECIMAL),
+	         CONVERT(YHQSYL, DECIMAL),
+	         YHQME,
+	         -- TBKGETME(YHQME),
+	         NULL,
+	         DATE_FORMAT(YHQKSSJ, '%Y-%m-%d'),
+	         DATE_FORMAT(YHQJSSJ, '%Y-%m-%d')
+	    FROM E_TBK_COMMODITY C
+	   WHERE UPLOAD_ID = #{uploadId}
+	     AND NOT EXISTS
+	   (SELECT 1 FROM E_TBK_COMMODITY_SETTLE CS WHERE CS.ID = C.ID)
+  </insert>
+</mapper>

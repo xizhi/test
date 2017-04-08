@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>替换</title>
+</head>
+<body>
+	<div>
+		<div style="height: 300px">
+			<textarea id="replace_from" style="height: 100%; width: 100%;"></textarea>
+		</div>
+		<div>
+			<button onclick="myReplace()">替换</button>
+		</div>
+		<div>
+			<pre id="replace_to">
+			</pre>
+		</div>
+	</div>
+<script type="text/javascript">
+function g(id){
+	return document.getElementById(id);
+}
+function myReplace(){
+	var fromData = g('replace_from').value;
+	var toData = fromData.replace(/(\d+)/g,function(m,p,index){
+		return Number(p) - 1;
+	});
+	
+	g('replace_to').innerHTML = toData;
+}
+</script>
+</body>
+</html>
